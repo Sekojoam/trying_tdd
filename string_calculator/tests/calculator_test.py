@@ -94,11 +94,21 @@ def test_string_calculator_should_return_160_for_60_100_1200():
     assert result == 160
 
 
-def test_string_calculator_should_return_1200_for_20_1000_1500():
+def test_string_calculator_should_return_1200_for_200_1000_1500():
     result = string_calculator("200\n1000\n1500")
     assert result == 1200
 
 
-def test_string_calculator_should_return_1200_for_20_1000_2500():
+def test_string_calculator_should_return_1200_for_200_1000_2500():
     result = string_calculator("200,1000,2500")
     assert result == 1200
+
+
+def test_string_calculator_should_return_1200_for_200_1000_2500_with_hashtag():
+    result = string_calculator("//#200#1000#2500")
+    assert result == 1200
+
+
+def test_string_calculator_should_return_200_for_200_2500_with_hashtag():
+    result = string_calculator("//#200#2500")
+    assert result == 200
