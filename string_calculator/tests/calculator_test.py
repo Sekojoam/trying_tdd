@@ -125,3 +125,21 @@ def test_string_calculator_should_return_200_for_150_50_with_delimiter():
 def test_string_calculator_should_return_201_for_150_51_with_delimiter():
     result = string_calculator("//[--]150--51")
     assert result == 201
+
+
+# 10. Many single or multi-char delimiters can be defined (each wrapped in single brackets)
+
+
+def test_string_calculator_should_return_201_for_multiple_delimiter():
+    result = string_calculator("//[--][###]100--51###50")
+    assert result == 201
+
+
+def test_string_calculator_should_return_2001_for_multiple_delimiter():
+    result = string_calculator("//[....][###]1000....501###500")
+    assert result == 2001
+
+
+def test_string_calculator_should_return_3001_for_multiple_delimiter():
+    result = string_calculator("//[....][###][---]1000....501###500---300---700---1030")
+    assert result == 3001
