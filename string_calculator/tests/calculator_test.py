@@ -112,3 +112,16 @@ def test_string_calculator_should_return_1200_for_200_1000_2500_with_hashtag():
 def test_string_calculator_should_return_200_for_200_2500_with_hashtag():
     result = string_calculator("//#200#2500")
     assert result == 200
+
+
+# 9. A multi char delimiter can be defined on the first line (e.g. //[###] for '###' as the delimiter)
+
+
+def test_string_calculator_should_return_200_for_150_50_with_delimiter():
+    result = string_calculator("//[###]150###50")
+    assert result == 200
+
+
+def test_string_calculator_should_return_201_for_150_51_with_delimiter():
+    result = string_calculator("//[--]150--51")
+    assert result == 201

@@ -1,12 +1,19 @@
+import re
+
+
 def string_calculator(sequence: str):
     if sequence == "":
         return 0
     separatorList = [",", "\n"]
-    if sequence.startswith("//"):
-        newSequence = sequence.split("//")[1]
-        delimiter = newSequence[0]
-        separatorList.append(delimiter)
-        sequence = newSequence[1:]
+    regexResult = re.search("//\[(.*)]", sequence)
+    if regexResult:
+        separatorList.append(regexResult.group(1))
+        sequence = sequence.split("]")[1]
+    else:
+        regexResult = re.search("//(\D+)\d", sequence)
+        if regexResult:
+            separatorList.append(regexResult.group(1))
+            sequence = sequence.split(f"//{separatorList[-1]}")[1]
     for separator in separatorList:
         if separator in sequence:
             numbers = sequence.split(separator)
